@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wholesale Indian Grocery Platform Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <main id="loginPage" class="login-page">
+      <section class="login-card slds-card">
+        <div class="brand-mark">[Business Name]</div>
+        <p class="tagline">Wholesale Indian &amp; South Asian Grocery Supply</p>
+        <label class="slds-form-element">
+          <span class="slds-form-element__label">Username</span>
+          <input class="slds-input" type="text" value="buyer@loblaws.ca" />
+        </label>
+        <label class="slds-form-element">
+          <span class="slds-form-element__label">Password</span>
+          <input class="slds-input" type="password" value="password" />
+        </label>
+        <button class="slds-button slds-button_brand full-width" data-login>Log In</button>
+        <a href="#" class="request-link">Request an Account</a>
+      </section>
+    </main>
+
+    <div id="buyerApp" class="app-shell hidden">
+      <header class="portal-header">
+        <div class="portal-logo" data-view="catalog">[Business Name]</div>
+        <div class="global-search">
+          <span class="search-icon">S</span>
+          <input id="catalogSearch" class="slds-input" placeholder="Search products, brands, SKUs..." />
+        </div>
+        <nav class="portal-actions">
+          <button class="icon-button" data-view="cart">Cart <span id="cartBadge" class="badge badge-info">0</span></button>
+          <div class="avatar-menu">
+            <span class="avatar">LC</span>
+            <div>
+              <strong>Loblaws Canada</strong>
+              <small>My Orders | My Account | Log Out</small>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <div class="portal-layout">
+        <aside class="sidebar">
+          <h2 class="sidebar-title">Categories</h2>
+          <div id="categoryTree" class="tree"></div>
+          <div class="accordion">
+            <details open>
+              <summary>Filter by Brand</summary>
+              <div id="brandFilters" class="checkbox-list"></div>
+            </details>
+            <details open>
+              <summary>Filter by Availability</summary>
+              <label><input type="checkbox" value="In Stock" data-availability /> In Stock</label>
+              <label><input type="checkbox" value="Low Stock" data-availability /> Low Stock</label>
+              <label><input type="checkbox" value="Pre-Order" data-availability /> Pre-Order</label>
+            </details>
+            <details>
+              <summary>Filter by Case Price Range</summary>
+              <div class="range-grid">
+                <input id="minPrice" class="slds-input" type="number" placeholder="Min" />
+                <input id="maxPrice" class="slds-input" type="number" placeholder="Max" />
+              </div>
+            </details>
+          </div>
+        </aside>
+
+        <section id="catalogView" class="content-panel"></section>
+        <section id="cartView" class="content-panel hidden"></section>
+        <section id="ordersView" class="content-panel hidden"></section>
+      </div>
+    </div>
+
+    <div id="adminApp" class="admin-shell hidden">
+      <header class="lightning-header">
+        <div class="app-launcher">[]</div>
+        <div class="lightning-brand">Salesforce | Import Export Console</div>
+        <nav class="admin-tabs">
+          <button class="active" data-admin-tab="home">Home</button>
+          <button data-admin-tab="orders">Orders</button>
+          <button data-admin-tab="products">Products</button>
+          <button data-admin-tab="accounts">Accounts</button>
+          <button data-admin-tab="shipments">Shipments</button>
+          <button data-admin-tab="reports">Reports</button>
+        </nav>
+      </header>
+      <section id="adminContent" class="admin-content"></section>
+    </div>
+
+    <div class="app-switcher">
+      <button class="slds-button slds-button_neutral" data-mode="buyer">Buyer Portal</button>
+      <button class="slds-button slds-button_neutral" data-mode="admin">Admin Lightning App</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
